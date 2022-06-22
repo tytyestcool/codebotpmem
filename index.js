@@ -46,7 +46,7 @@ Client.on("interactionCreate", interaction => {
                     );
                 
                 channel.send({content: "<@" + interaction.user.id + "> Voici votre ticket, vous pouvez le fermer avec le bouton en desous <@607324618369531935>", components: [row]});
-                console.log("ticket ouvert")
+                Client.channels.cache.get("988582799055405068").send("un ticket à été ouvert")
                 
                 interaction.reply({content: "ticket correctement créé", ephemeral: true});
 
@@ -65,13 +65,13 @@ Client.on("interactionCreate", interaction => {
             interaction.message.delete();
     
             interaction.channel.send({content: "Supprimer le ticket", components: [row]});
-            console.log("ticket archivé")
+            Client.channels.cache.get("988582799055405068").send("un ticket à été archivé")
     
             interaction.reply({content: "ticket archivé", ephemeral: true});
         }
          else if (interaction.customId === "delete-ticket"){
             interaction.channel.delete();
-            console.log("ticket suprimer")
+            Client.channels.cache.get("988582799055405068").send("un ticket à été suprimé")
         };
     }
 });
