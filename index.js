@@ -142,4 +142,4 @@ module.exports = new Command({
 
 
 
-Client.login(process.env.toker); 
+Client.login(process.env.token); 
