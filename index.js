@@ -46,6 +46,7 @@ Client.on("interactionCreate", interaction => {
                     );
                 
                 channel.send({content: "<@" + interaction.user.id + "> Voici votre ticket, vous pouvez le fermer avec le bouton en desous <@607324618369531935>", components: [row]});
+                console.log("ticket ouvert")
                 
                 interaction.reply({content: "ticket correctement créé", ephemeral: true});
 
@@ -64,11 +65,13 @@ Client.on("interactionCreate", interaction => {
             interaction.message.delete();
     
             interaction.channel.send({content: "Supprimer le ticket", components: [row]});
+            console.log("ticket archivé")
     
             interaction.reply({content: "ticket archivé", ephemeral: true});
         }
          else if (interaction.customId === "delete-ticket"){
             interaction.channel.delete();
+            console.log("ticket suprimer")
         };
     }
 });
@@ -99,9 +102,7 @@ Client.on("guildMemberRemove", member => {
 
 /*
 const Command = require("../Structure/Command")
-
 module.exports = new Command({
-
     name: "ticket",
     description: "Permet d'envoyer l'embed des tickets",
     utilisation: "",
@@ -109,26 +110,20 @@ module.exports = new Command({
     permission: Discord.Permissions.FLAGS.MANAGE_GUILD,
     category: "Ticket",
     cooldown: 10,
-
     async run(bot, message, args, db) {
-
         let Embed = new Discord.MessageEmbed()
         .setColor(bot.color)
         .setTitle(`Tickets`)
         .setDescription("Appuyer sur le bouton ci-dessous pour ouvrir un merveilleux ticket")
         .setTimestamp()
         .setFooter({text: `${bot.user.username}`, iconURL: bot.user.displayAvatarURL({dynamic: true})})
-
         const btn = new Discord.MessageActionRow().addComponents(new Discord.MessageButton()
         .setStyle("PRIMARY")
         .setLabel("Ouvrir un ticket")
         .setEmoji("📩")
         .setCustomId("ticket"))
-
         message.author ? await message.delete() : await message.deferReply() && await message.deleteReply();
         await message.channel.send({embeds: [Embed], components: [btn]})
-
-
        var row = new Discord.MessageActionRow()
             .addComponents(new Discord.MessageButton()
                 .setCustomId("open-ticket")
@@ -136,15 +131,9 @@ module.exports = new Command({
                 .setStyle("PRIMARY")
                 .setEmoji("🎖")
                 );
-
     Client.channels.cache.get("988838957708107816")
     
     .send({content: "Appuyez sur le bouton pour crée un ticket demande de grade", components: [row]});
-
-
-
-
-
         },
     };
     }
@@ -153,4 +142,4 @@ module.exports = new Command({
 
 
 
-Client.login(process.env.token); 
+Client.login("OTg4NzMxNDAwMzYwNDYwMzI4.G-U6JX.3wxyktB8VqHgzi-JXc0rKGqRXh51NpTzCOoleI"); 
