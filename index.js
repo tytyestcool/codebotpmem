@@ -142,4 +142,4 @@ module.exports = new Command({
 
 
 
-Client.login("OTg4NzMxNDAwMzYwNDYwMzI4.G-U6JX.3wxyktB8VqHgzi-JXc0rKGqRXh51NpTzCOoleI"); 
+Client.login(process.env.toker); 
